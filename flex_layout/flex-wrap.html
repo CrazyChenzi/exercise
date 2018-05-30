@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flex-wrap属性定义，如果一条轴线排不下，如何换行</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background: #ffeb3b;
+      margin: 10px;
+    }
+    /* nowrap（默认）：不换行 */
+    .nowrap {
+      display: flex;
+      flex-wrap: nowrap;
+      width: 300px;
+    }
+    /* wrap：换行，第一行在上方。 */
+    .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      width: 300px;
+    }
+    /* wrap-reverse：换行，第一行在下方。 */
+    .wrap-reverse {
+      display: flex;
+      flex-wrap: wrap-reverse;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <h1>nowrap: 不换行</h1>
+  <div class="nowrap">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box">6</div>
+  </div>
+  <h1>wrap: 换行，第一行在上方</h1>
+  <div class="wrap"> 
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box">6</div>
+  </div>
+  <h1>wrap-reverse: 换行，第一行在下方</h1>
+  <div class="wrap-reverse"> 
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box">6</div>
+  </div>
+</body>
+</html>

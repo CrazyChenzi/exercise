@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>justify-content属性定义了项目在主轴上的对齐方式</title>
+  <style>
+    .box1 {
+      height: 30px;
+      width: 100px;
+      background: #ffeb3b;
+      margin: 10px;
+    }
+    .box2 {
+      height: 30px;
+      width: 30px;
+      background: #ffeb3b;
+      margin: 10px;
+    }
+    .box3 {
+      height: 30px;
+      width: 150px;
+      background: #ffeb3b;
+      margin: 10px;
+    }
+    /* flex-start（默认值）：左对齐 */
+    .flex-start {
+      display: flex;
+      justify-content: flex-start;
+    }
+    /* flex-end：右对齐 */
+    .flex-end {
+      display: flex;
+      justify-content: flex-end;
+    }
+    /* center: 居中 */
+    .center {
+      display: flex;
+      justify-content: center;
+    }
+    /* space-between：两端对齐，项目之间的间隔都相等。 */
+    .space-between {
+      display: flex;
+      justify-content: space-between;
+    }
+    /* space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍 */
+    .space-around {
+      display: flex;
+      justify-content: space-around;
+    }
+  </style>
+</head>
+<body>
+  <h1>flex-start（默认值）：左对齐</h1>
+  <div class="flex-start">
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+  </div>
+
+  <h1>flex-end：右对齐</h1>
+  <div class="flex-end">
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+  </div>
+
+  <h1>center： 居中</h1>
+  <div class="center">
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+  </div>
+
+  <h1>space-between：两端对齐，项目之间的间隔都相等</h1>
+  <div class="space-between">
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+  </div>
+
+  <h1>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍</h1>
+  <div class="space-around">
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+  </div>
+</body>
+</html>
