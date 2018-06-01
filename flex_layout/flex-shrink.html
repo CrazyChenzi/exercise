@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小</title>
+  <style>
+    .box1 {
+      height: 30px;
+      width: 100px;
+      background: #ffeb3b;
+      margin: 10px;
+      flex-shrink: 1;
+    }
+    .box2 {
+      height: 30px;
+      width: 300px;
+      background: #ffeb3b;
+      margin: 10px;
+      flex-shrink: 2;
+    }
+    .box3 {
+      height: 30px;
+      width: 150px;
+      background: #ffeb3b;
+      margin: 10px;
+      flex-shrink: 0;
+    }
+    .flex-shrink {
+      display: flex;
+      width: 500px;
+      height: 400px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <div class="flex-shrink">
+    <div class="box1">1: flex-shrink: 1</div>
+    <div class="box2">2: flex-shrink: 2</div>
+    <div class="box3">3: flex-shrink: 0</div>
+  </div>
+</body>
+</html>

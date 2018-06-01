@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大</title>
+  <style>
+    .box1 {
+      height: 30px;
+      width: 100px;
+      background: #ffeb3b;
+      margin: 10px;
+    }
+    .box2 {
+      height: 30px;
+      width: 30px;
+      background: #ffeb3b;
+      margin: 10px;
+      flex-grow: 1;
+    }
+    .box3 {
+      height: 30px;
+      width: 150px;
+      background: #ffeb3b;
+      margin: 10px;
+    }
+    .flex-grow {
+      display: flex;
+      width: 600px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+    <!-- 如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。
+      如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍 -->
+  <div class="flex-grow">
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+  </div>
+</body>
+</html>

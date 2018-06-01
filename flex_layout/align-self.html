@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，
+    表示继承父元素的align-items属性，如果没有父元素，则等同于stretch</title>
+  <style>
+    .flex-start {
+      height: 20px;
+      width: 100px;
+      background: #ffeb3b;
+      align-self: flex-start;
+      margin: 10px;
+    }
+    .center {
+      height: 30px;
+      width: 30px;
+      background: #ffeb3b;
+      margin: 10px;
+      align-self: center ;
+    }
+    .flex-end {
+      height: 60px;
+      width: 150px;
+      background: #ffeb3b;
+      margin: 10px;
+      align-self: flex-end;
+    }
+    .baseline {
+      align-self: baseline;
+      display: flex;
+    }
+    .baseline-box1 {
+      height: 60px;
+      width: 150px;
+      background: #ffeb3b;
+      margin: 10px;
+    }
+    .baseline-box2 {
+      height: 160px;
+      width: 150px;
+      background: #ffeb3b;
+      margin: 10px;
+      padding: 40px;
+    }
+    .stretch {
+      width: 80px;
+      background: #ffeb3b;
+      margin: 10px;
+      align-self: stretch ;
+    }
+    .auto  {
+      height: 30px;
+      width: 80px;
+      background: #ffeb3b;
+      margin: 10px;
+      align-self: auto ;
+    }
+    .align-self {
+      display: flex;
+      width: 700px;
+      height: 600px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <div class="align-self">
+    <div class="flex-start">1: flex-start</div>
+    <div class="center">2: center</div>
+    <div class="flex-end">3: flex-end</div>
+    <div class="stretch">5: stretch</div>
+    <div class="auto">6: auto </div>
+  </div>
+  <div class="baseline">
+    <div class="baseline-box1">4: baseline</div>
+    <div class="baseline-box2">4.1: baseline</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选</title>
+  <style>
+    .box1 {
+      width: 100px;
+      height: 100px;
+      background: #ffeb3b;
+      flex: 2 3 600px;
+      margin: 10px;
+    }
+    .box2 {
+      width: 100px;
+      height: 100px;
+      background: #ffeb3b;
+      margin: 10px;
+    }
+    .flex {
+      display: flex;
+      width: 800px;
+    }
+  </style>
+</head>
+<body>
+    <!-- 该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto) -->
+  <div class="flex">
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+  </div>
+</body>
+</html>

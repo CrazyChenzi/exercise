@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，
+    计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小</title>
+  <style>
+    .box1 {
+      height: 30px;
+      width: 100px;
+      background: #ffeb3b;
+      margin: 10px;
+    }
+    .box2 {
+      height: 30px;
+      width: 30px;
+      background: #ffeb3b;
+      margin: 10px;
+      flex-basis: 300px;
+    }
+    .box3 {
+      height: 30px;
+      width: 150px;
+      background: #ffeb3b;
+      margin: 10px;
+    }
+    .flex-basis {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <div class="flex-basis">
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+  </div>
+</body>
+</html>

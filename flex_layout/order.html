@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0</title>
+  <style>
+    .box1 {
+      height: 30px;
+      width: 100px;
+      background: #ffeb3b;
+      margin: 10px;
+      order: 2;
+    }
+    .box2 {
+      height: 30px;
+      width: 30px;
+      background: #ffeb3b;
+      margin: 10px;
+    }
+    .box3 {
+      height: 30px;
+      width: 150px;
+      background: #ffeb3b;
+      margin: 10px;
+    }
+    .order {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <div class="order">
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+  </div>
+</body>
+</html>
