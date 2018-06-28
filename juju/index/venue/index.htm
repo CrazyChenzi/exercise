@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="fsvs demo">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="icon" type="image/gif" href="http://www.jujucatering.com/img/favicon.ico">
+	<title>聚聚外烩</title>
+	<script src="../../static/js/jquery-2.1.3.min.js"></script>
+	<link href="../../static/css/index.css" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="wrapper">
+		<nav class="nav" id="nav_d0">
+			<p>
+				<a class="mu" menuId="4c8d507e-de2b-41cc-9667-e35e95914bb4" e_data="Homepage" c_data="首页" href="../index.htm?mId=4c8d507e-de2b-41cc-9667-e35e95914bb4">首页</a>
+				<a class="mu" menuId="671a3971-2e80-4481-86f8-3048201764f1" e_data="menu" c_data="精选菜单" href="../menu/index.htm?mId=671a3971-2e80-4481-86f8-3048201764f1">精选菜单</a>
+				<a class="mu" menuId="2df6cf99-9083-4eed-b7df-79630bbc7417" e_data="catering" c_data="外烩服务" href="../catering/index.htm?mId=2df6cf99-9083-4eed-b7df-79630bbc7417">外烩服务</a>
+				<a class="mu" menuId="2b106446-321a-4301-9297-e294cd01061c" e_data="company" c_data="公司资质" href="../company/index.htm?mId=2b106446-321a-4301-9297-e294cd01061c">公司资质</a>
+				<a class="mu" menuId="502e343b-c4bc-4522-af54-2c0088c8b6ae" e_data="active" c_data="活动案例" href="../active/index.htm?mId=502e343b-c4bc-4522-af54-2c0088c8b6ae">活动案例</a>
+				<a class="mu" menuId="d493bf67-c8fc-4dfa-9835-3f4d443e5abe" e_data="venue" c_data="场地推荐" href="../venue/index.htm?mId=d493bf67-c8fc-4dfa-9835-3f4d443e5abe">场地推荐</a>
+				<a class="mu" menuId="aad34553-9009-4242-9672-35f3b45ebd8a" e_data="contactus" c_data="联系我们" href="../contactus/index.htm?mId=aad34553-9009-4242-9672-35f3b45ebd8a">联系我们</a>
+				<a class="wechat" href="###">
+					<span>
+						<i></i>
+					</span>
+				</a>
+				<a class="sina" target="_" href="http://weibo.com/u/5702970065"></a>
+				<a class="phone" href="###">
+					<span>
+						<i></i>400-622-6332</span>
+				</a>
+			</p>
+		</nav>
+		<div class="page_title2"></div>
+		<div class="venue_box">
+			<div class="subtitle" style="text-align: center;">场地推荐
+				<span class="curfont">Venue Recommendation</span>
+			</div>
+			<p style="text-align: center;">&nbsp; &nbsp;</p>
+			<p>
+				<div style="text-align: center;">我们可承接30-10000人规模的餐宴活动。无论是觥筹交错的盛大宴会，还是三两知己的温馨派对，我们都将为您精心奉上难以忘怀的美食和服务。</div>
+				<div style="text-align: center;">专业的服务团队，拥有许多宴会经验，致力于提供最好最令人难忘的完美盛宴。我们可以迎合您的需要，提供各种设备以及宴会摆饰，并为专门的设计师为您制作各种宴会所需的小礼品以及卡片等。</div>
+				<div style="text-align: center;">如果你还没有准备好足够的活动场地，我们总能找到适合您的理想场地。</div>
+			</p>
+			<p style="text-align: center;">&nbsp; &nbsp;</p>
+			<p class="curfont" style="text-align: center;">We can provide banquet services to entertain 30~10,000 guests. Either in terms of large banquets or small gatherings among
+				close friends, we will create an unforgettable experience for you with our delicacies and services. Our professional
+				service team has rich banquet service experiences and is committed to creating banquets second to none. Our equipment
+				and banquet layout are up to your requirement. Our designers can make various gifts and cards for different banquets.
+				If you have not yet thought about the activity venue, we can try our best to find an ideal one for you.</p>
+			<p style="text-align: center;">&nbsp; &nbsp;</p>
+			<div class="imgbox">
+				<p style="text-align: center;">
+					<img src="http://www.jujucatering.com/img/venue.jpg" border="0" />
+				</p>
+				<p style="text-align: center;">
+					<br/>
+				</p>
+			</div>
+		</div>
+		<!-- <div class="venuephoto">
+			<div class="subtitle">场地照片<span class="curfont">Venue Photo</span></div>
+			<ul>
+			</ul>
+		</div> -->
+		<div class="footer">Copyright2015©JUJUparty Corporation,All Rights Reserved Collect form-More Templates
+			<br>上海趴体外烩餐饮管理有限公司沪ICP备13028085号-1</div>
+	</div>
+
+	<script>
+		$(function () {
+			// 根据id选中菜单
+			$('.mu').each(function () {
+				if ($(this).attr("menuId") == "d493bf67-c8fc-4dfa-9835-3f4d443e5abe") {
+					$(this).addClass("cur");
+					return;
+				}
+			});
+
+			//菜单变化
+			$('.mu').hover(function () {
+				$(this).html($(this).attr('e_data'))
+			}, function () {
+				$(this).html($(this).attr('c_data'))
+			});
+		})
+	</script>
+
+</body>
+
+</html>
