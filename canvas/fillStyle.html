@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>fillStyle</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+    canvas {
+      border: 2px solid red;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="fillStyle" width="200" height="200"></canvas>
+  <canvas id="fillStyle1" width="200" height="200"></canvas>
+  <canvas id="fillStyle2" width="200" height="200"></canvas>
+  <canvas id="fillStyle3" width="200" height="200"></canvas>
+  <canvas id="fillStyle4" width="200" height="200"></canvas>
+  <canvas id="fillStyle5" width="200" height="200"></canvas>
+  <canvas id="fillStyle6" width="200" height="200"></canvas>
+  <script>
+    /**
+    void ctx.fillRect(x, y, width, height);
+    lineWidth = value 设置线条的宽度  默认为1.0  必须为正数
+    lineCap = type 设置线条末端样式  butt(默认), round, square
+    lineJoin = type 设置线条与线条间接合处的样式  round, bevel, miter(默认)
+    miterLimit = value 限制当两条线相交时交接处最大长度；所谓交接处长度(斜接长度)是指线条交接处内角顶点到外角顶点的长度
+    getLineDash() 返回一个包含当前虚线的样式， 长度为非负偶数的数组
+    setLineDash(segments) 设置当前虚线的样式
+    lineDashOffset = value 设置虚线样式的起始偏移量
+    */
+
+    const canvas = document.getElementById('fillStyle')
+    const ctx = canvas.getContext('2d')
+    for (let i = 0; i < 6; i++) {
+      for (let j = 0; j < 6; j++) {
+        ctx.fillStyle = 'rgb(' + Math.floor(255 - 42.5 * i) + ',' + Math.floor(255 - 42.5 * j) + ',0)'
+        ctx.fillRect(j * 25, i * 25, 25, 25)
+      }
+    }
+
+    // 透明度设置  可用rgba、globalAlpha
+    const canvas1 = document.getElementById('fillStyle1')
+    const ctx1 = canvas1.getContext('2d')
+    // 画背景
+    ctx1.fillStyle = '#fd0'
+    ctx1.fillRect(0, 0, 75, 75)
+    ctx1.fillStyle = '#6c0'
+    ctx1.fillRect(75, 0, 75, 75)
+    ctx1.fillStyle = '#09f'
+    ctx1.fillRect(0, 75, 75, 75)
+    ctx1.fillStyle = '#f30'
+    ctx1.fillRect(75, 75, 75, 75)
+    ctx1.fillStyle = '#fff'
+    // 设置透明度值
+    ctx1.globalAlpha = 0.2
+    // 画半透明圆
+    for (let i = 0; i < 7; i++) {
+      ctx1.beginPath()
+      ctx1.arc(75, 75, 10 + 10 * i, 0, Math.PI * 2, true)
+      ctx1.fill()
+    }
+    const canvas2 = document.getElementById('fillStyle2')
+    const ctx2 = canvas2.getContext('2d')
+    ctx2.fillStyle = 'rgb(255, 221, 0)'
+    ctx2.fillRect(0, 0, 150, 37.5)
+    ctx2.fillStyle = 'rgb(102, 204, 0)'
+    ctx2.fillRect(0, 37.5, 150, 37.5)
+    ctx2.fillStyle = 'rgb(0, 153, 255)'
+    ctx2.fillRect(0, 75, 150, 37.5)
+    ctx2.fillStyle = 'rgb(255, 51, 0)'
+    ctx2.fillRect(0, 112.5, 150, 37.5)
+    // 画半透矩形
+    for (let i = 0; i < 10; i++) {
+      ctx2.fillStyle = 'rgba(255, 255, 255, ' + (i + 1) / 10 + ')'
+      for (let j = 0; j < 4; j++) {
+        ctx2.fillRect(5 + i * 14, 5 + j * 37.5, 14, 27.5)
+      }
+    }
+
+    const canvas3 = document.getElementById('fillStyle3')
+    const ctx3 = canvas3.getContext('2d')
+    ctx3.lineWidth = 1
+    ctx3.beginPath()
+    ctx3.moveTo(25, 25)
+    ctx3.lineTo(25, 120)
+    ctx3.stroke()
+    ctx3.lineWidth = 5
+    ctx3.beginPath()
+    ctx3.moveTo(45, 25)
+    ctx3.lineTo(45, 120)
+    ctx3.stroke()
+
+    // lineCap属性
+    const canvas4 = document.getElementById('fillStyle4')
+    const ctx4 = canvas4.getContext('2d')
+    const lineCap = ['butt', 'round', 'square']
+    // 创建路径
+    ctx4.strokeStyle = '#09f'
+    ctx4.beginPath()
+    ctx4.moveTo(10, 10)
+    ctx4.lineTo(140, 10)
+    ctx4.moveTo(10, 140)
+    ctx4.lineTo(140, 140)
+    ctx4.stroke()
+    // 画线条
+    ctx4.strokeStyle = 'black'
+    for (let i = 0; i < lineCap.length; i++) {
+      ctx4.lineWidth = 15
+      ctx4.lineCap = lineCap[i]
+      ctx4.beginPath()
+      ctx4.moveTo(25 + i * 50, 10)
+      ctx4.lineTo(25 + i * 50, 140)
+      ctx4.stroke()
+    }
+
+    // lineJoin
+    const canvas5 = document.getElementById('fillStyle5')
+    const ctx5 = canvas5.getContext('2d')
+    const lineJoin = ['round', 'bevel', 'miter']
+    ctx5.lineWidth = 10
+    for (let i = 0; i < lineJoin.length; i++) {
+      ctx5.lineJoin = lineJoin[i]
+      ctx5.beginPath()
+      ctx5.moveTo(-5, 5 + i * 40)
+      ctx5.lineTo(35, 45 + i * 40)
+      ctx5.lineTo(75, 5 + i * 40)
+      ctx5.lineTo(115, 45 + i * 40)
+      ctx5.lineTo(155, 5 + i * 40)
+      ctx5.stroke()
+    }
+    
+    // 使用虚线用 setLineDash 方法和 lineDashOffset 属性来制定虚线样式. setLineDash 方法接受一个数组，来指定线段与间隙的交替；lineDashOffset 属性设置起始偏移量
+    const canvas6 = document.getElementById('fillStyle6')
+    const ctx6 = canvas6.getContext('2d')
+    let offset = 0
+    function draw () {
+      ctx6.clearRect(0, 0, canvas6.width, canvas6.height)
+      ctx6.setLineDash([4, 2])
+      ctx6.lineDashOffset = -offset
+      ctx6.strokeRect(10, 10, 100, 100)
+    }
+    function march () {
+      offset++
+      if (offset > 16) offset = 0
+      draw()
+      setTimeout(march, 20)
+    }
+    march()
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DrawText</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+    canvas {
+      border: 2px solid red;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="500" height="500"></canvas>
+  <script>
+    const canvas = document.getElementById('canvas')
+    const ctx = canvas.getContext('2d')
+    ctx.font = '16px serif'
+    ctx.fillText('Hello World', 10, 50)
+    ctx.textBaseline = 'top'
+    ctx.strokeText('Hello StrokeText', 10, 70)
+
+    const text = ctx.measureText('foo')
+    console.log(text.width)
+  </script>
+</body>
+</html>

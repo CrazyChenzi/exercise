@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>demo</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      border: noen;
+    }
+    canvas {
+      border: 2px solid red;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stockGraph" width="200" height="200"></canvas>
+  <canvas id="stockGraph1" width="200" height="200"></canvas>
+  <canvas id="stockGraph2" width="200" height="200"></canvas>
+  <canvas id="stockGraph3" width="200" height="200"></canvas>
+  <canvas id="stockGraph4" width="200" height="200"></canvas>
+  <canvas id="stockGraph5" width="200" height="200"></canvas>
+  <canvas id="stockGraph6" width="200" height="200"></canvas>
+  <canvas id="stockGraph7" width="200" height="200"></canvas>
+  <script>
+    const canvas = document.getElementById('stockGraph')
+    const ctx = canvas.getContext('2d')
+    ctx.fillStyle = 'red'
+    ctx.fillRect (10, 10, 55, 50)
+    ctx.fillStyle = '#7f7fe3'
+    ctx.fillRect (30, 30, 55, 50)
+
+    const canvas1 = document.getElementById('stockGraph1')
+    const ctx1 = canvas1.getContext('2d')
+    // 绘制一个填充的矩形
+    ctx1.fillRect(25, 25, 100, 100) // x, y, w, h
+    ctx1.clearRect(45, 45, 60, 60)
+    ctx1.strokeRect(50, 50, 50, 50)
+
+    const canvas2 = document.getElementById('stockGraph2')
+    const ctx2 = canvas2.getContext('2d')
+    // 绘制一个三角形
+    ctx2.beginPath()  // 新建一条路径，生成之后，图形绘制命令被指向到路径上生成路径  closePath() 闭合路径之后图形绘制命令又重新指向到上下文
+    ctx2.moveTo(75, 50)
+    ctx2.lineTo(100, 75)
+    ctx2.lineTo(100, 25)
+    ctx2.fill()
+
+    const canvas3 = document.getElementById('stockGraph3')
+    const ctx3 = canvas3.getContext('2d')
+    // 绘制一个笑脸
+    ctx3.beginPath()
+    ctx3.arc(75, 75, 50, 0, Math.PI*2, true)  // 绘制
+    ctx3.moveTo(110, 75)
+    ctx3.arc(75, 75, 35, 0, Math.PI, false) // 口(顺时针)
+    ctx3.moveTo(65, 65)
+    ctx3.arc(60, 65, 5, 0, Math.PI*2, true) // 左眼
+    ctx3.moveTo(95, 65)
+    ctx3.arc(90, 65, 5, 0, Math.PI*2, true) // 右眼
+    ctx3.stroke()
+
+    const canvas4 = document.getElementById('stockGraph4')
+    const ctx4 = canvas4.getContext('2d')
+    // 绘制三脚型
+    ctx4.beginPath()
+    ctx4.moveTo(25, 25)
+    ctx4.lineTo(105, 25)
+    ctx4.lineTo(25, 105)
+    ctx4.fill()
+
+    ctx4.beginPath()
+    ctx4.moveTo(125, 125)
+    ctx4.lineTo(125, 45)
+    ctx4.lineTo(45, 125)
+    ctx4.closePath()
+    ctx4.stroke()
+
+    // arc的使用，画圆
+    const canvas5 = document.getElementById('stockGraph5')
+    const ctx5 = canvas5.getContext('2d')
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 3; j++) {
+        ctx5.beginPath()
+        let x = 25 + j * 50 // x坐标
+        let y = 25 + i * 50 // y坐标
+        let redius = 20 // 圆弧半径
+        let startAngle = 0 // 开始点
+        let endAngle = Math.PI + (Math.PI * j) / 2 // 结束点
+        let anticlockwise = i % 2 === 0 ? false : true // 顺时针还是逆时针
+        
+        ctx5.arc(x, y, redius, startAngle, endAngle, anticlockwise)
+
+        i > 1 ? ctx5.fill() : ctx5.stroke()
+      }
+    }
+
+    // 二次贝塞尔曲线
+    const canvas6 = document.getElementById('stockGraph6')
+    const ctx6 = canvas6.getContext('2d')
+    ctx6.beginPath()
+    ctx6.moveTo(75, 25)
+    ctx6.quadraticCurveTo(25, 25, 25, 62.5)
+    ctx6.quadraticCurveTo(25, 100, 50, 100)
+    ctx6.quadraticCurveTo(50, 120, 30, 125)
+    ctx6.quadraticCurveTo(60, 120, 65, 100)
+    ctx6.quadraticCurveTo(125, 100, 125, 62.5)
+    ctx6.quadraticCurveTo(125, 25, 75, 25)
+    ctx6.stroke()
+
+    // 三次贝塞尔曲线
+    const canvas7 = document.getElementById('stockGraph7')
+    const ctx7 = canvas7.getContext('2d')
+
+    ctx7.beginPath()
+    ctx7.moveTo(75, 40)
+    ctx7.bezierCurveTo(75, 37, 70, 25, 50, 25)
+    ctx7.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5)
+    ctx7.bezierCurveTo(20, 80, 40, 102, 75, 120)
+    ctx7.bezierCurveTo(110, 102, 130, 80, 130, 62.5)
+    ctx7.bezierCurveTo(130, 62.5, 130, 25, 100, 25)
+    ctx7.bezierCurveTo(85, 25, 75, 37, 75, 40)
+    ctx7.stroke()
+  </script>
+</body>
+</html>
