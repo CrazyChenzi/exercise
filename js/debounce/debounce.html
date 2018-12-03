@@ -1,0 +1,40 @@
+<!-- 防抖：在下次函数执行之前必须等待相应的时间，正确实现的方法：将若干个函数组合在一起，并在给定的时间过去之后仅被调用一次 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>debonce防抖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div id="container" style="height: 3000px"></div>
+  <script>
+    /**
+     *  防抖主要使用setTimeout实现
+     *  fn 被防抖的方法
+     *  delay 防抖的时间 
+    */
+    function debounce (fn, delay) {
+      let timer = null
+      return function () {
+        // 通过this 和 arguments获取函数的作用域和变量
+        const _this = this
+        const args = arguments
+
+        timer && clearTimeout(timer)
+        timer = setTimeout(() => {
+          fn.apply(_this, args)
+        }, delay)
+      }
+    }
+    
+    function foo () {
+      console.log('防抖....' + Date.now())
+    }
+
+    window.onscroll = debounce(foo, 200)
+  </script>
+</body>
+</html>

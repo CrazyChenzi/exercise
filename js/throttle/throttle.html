@@ -1,0 +1,44 @@
+<!-- 节流函数允许一个函数在规定的时间内只执行一次。和防抖的最大区别就是到这个时间就会执行一次  而不是停下后才会执行 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>throttle函数节流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div id="container" style="height: 3000px"></div>
+  <script>
+    /**
+      * fn 要节流的函数
+      * delay 节流的间隔时间
+    */
+    function throttle (fn, delay) {
+      let timer, args = arguments, start
+      return function Loop () {
+        const _this = this
+        let now = Date.now()
+        !start && (start = now)
+        timer && clearTimeout(timer)
+
+        if (now -start >= delay) {
+          fn.apply(_this, args)
+          start = now
+        } else {
+          timer = setTimeout(() => {
+            Loop.apply(_this.args)
+          }, 50)
+        }
+      }
+    }
+    
+    function foo () {
+      console.log('节流....' + Date.now())
+    }
+    
+    window.onscroll = throttle(foo, 800)
+  </script>
+</body>
+</html>
