@@ -2,7 +2,7 @@
   <div class="img-handle" :class="isMini?'mini':''">
     <el-upload
       list-type="picture-card"
-      :file-list="imgs"
+      :file-list="files"
       action="https://jsonplaceholder.typicode.com/posts/"
       :on-preview="picturePreview"
       :on-remove="handleRemove"
@@ -62,16 +62,12 @@ export default {
     }
   },
   mounted() {
-    this.getFileByType(this.files)
   },
   methods: {
-    getFileByType(fileList) {
-      this.imgs = fileList
-    },
     // 文件上传前钩子
     beforeUpload(file) {
       // console.log(file)
-      this.imgs.push(file)
+      this.files.push(file)
       return false
     },
     // 文件上传成功的钩子
@@ -80,19 +76,24 @@ export default {
     },
     // 点击文件列表中已上传的文件时的钩子
     picturePreview(file) {
-      console.log(file)
+      this.files.push(file)
       this.visible = true
     },
     // 文件列表移除文件的钩子
     handleRemove(file, fileList) {
-      this.imgs = fileList
+      for (let i = 0; i < this.files.length; i++) {
+        if (this.files[i].name === file.name) {
+          this.files.splice(i, 1)
+          break
+        }
+      }
     },
     handleError () {
-      const file = {
-        name: "1",
+      const files = {
+        name: Date.now(),
         url: "http://www.17qq.com/img_qqtouxiang/69182556.jpeg"
       }
-      this.imgs.push(file)
+      this.files.push(files)
     }
   }
 };

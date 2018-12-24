@@ -5,10 +5,9 @@
       class="material"
       row-key="index"
       size="mini"
-      :data="thisForm.datas"
+      :data="datas"
       border
       style="width: 100%"
-      highlight-current-row
     >
       <el-table-column label="序号" align="center" width="55" fixed="left">
         <template slot-scope="{row, $index}">
@@ -127,14 +126,14 @@
         </template>
       </el-table-column>
       <el-table-column prop="sampleTable" label="样表（电子版本/图片）" width="180" ref="sampleTable">
-        <template slot-scope="{row}">
+        <template slot-scope="{row, $index}">
           <ImgUpload
             :isMini="true"
-            :files="row.sampleTable.imgs"
+            :files.sync="row.sampleTable.imgs"
             :imageNum="40"
             :multiple="true"
             @upload="uploadImgs(row, $event)"
-            @heigthChange="heigthChange"
+            @remove="removeImg"
           ></ImgUpload>
         </template>
       </el-table-column>
@@ -153,88 +152,81 @@ export default {
   components: { ImgUpload },
   data() {
     return {
-      thisForm: {
-        datas: [
-          {
-            canBeShortOf: false,
-            copyProvide: false,
-            count: 1,
-            departmrntName: "",
-            departmrntSystemName: "",
-            departmrntSystemUrl: null,
-            electronicOutput: false,
-            electronicProvide: false,
-            emptyTable: "",
-            eventId: "a93c3c004bcd445db14680fe0c6334de",
-            id: "45c0ffe21b5c428c899b300679a52fa2",
-            io: "I",
-            name: "",
-            number: "",
-            orderNum: "1",
-            originalScriptOutput: false,
-            originalScriptProvide: false,
-            preAcceptance: null,
-            primary: null,
-            provideWay: "",
-            remarks: "",
-            sampleTable: {
-              imgs: [
-                {
-                  name: "1",
-                  url: "http://www.17qq.com/img_qqtouxiang/69182556.jpeg"
-                },
-                {
-                  name: "1",
-                  url: "http://www.17qq.com/img_qqtouxiang/69182556.jpeg"
-                },
-                {
-                  name: "1",
-                  url: "http://www.17qq.com/img_qqtouxiang/69182556.jpeg"
-                },
-                {
-                  name: "1",
-                  url: "http://www.17qq.com/img_qqtouxiang/69182556.jpeg"
-                }
-              ]
-            },
-            source: "",
-            type: "申请表",
-            acceptance: [
-              {
-                content: "",
-                id: "978593df62654eef9fcece5498d60995",
-                materialId: "45c0ffe21b5c428c899b300679a52fa2",
-                number: 1,
-                type: 1
-              }
-            ],
-            approval: [
-              {
-                content: "",
-                id: "0a479d6c2b894eb980fcc6ec93bda0e4",
-                materialId: "45c0ffe21b5c428c899b300679a52fa2",
-                number: 1,
-                type: 2
-              }
-            ]
-          }
-        ]
-      }
-    };
+      datas: []
+    }
   },
-  mounted() {},
+  mounted() {
+    this.getData().then((res) => {
+      console.log(res[0].sampleTable)
+      this.datas = res
+    })
+  },
   methods: {
     /* eslint-disable */
     // 上传图片
     uploadImgs(row, imgs) {
-      row.sampleTable = imgs;
+      row.sampleTable = imgs
     },
     heigthChange() {
-      this.thisForm.datas[0].sampleTable.imgs.splice(0, 1)
-      // this.$refs.material.doLayout()
     },
     uploadImg(row, imgs) {
-      row.emptyTable = imgs;
+      row.emptyTable = imgs
+    },
+    getData () {
+      let L = parseInt(Math.random()*10+1)
+      let arr = []
+      for (let i = 0; i < L; i++) {
+        let data = {
+          canBeShortOf: false,
+          copyProvide: false,
+          count: 1,
+          departmrntName: "",
+          departmrntSystemName: "",
+          departmrntSystemUrl: null,
+          electronicOutput: false,
+          electronicProvide: false,
+          emptyTable: "",
+          eventId: "a93c3c004bcd445db14680fe0c6334de",
+          id: "45c0ffe21b5c428c899b300679a52fa2",
+          io: "I",
+          name: "",
+          number: "",
+          orderNum: "1",
+          originalScriptOutput: false,
+          originalScriptProvide: false,
+          preAcceptance: null,
+          primary: null,
+          provideWay: "",
+          remarks: "",
+          sampleTable: {
+            "imgs": [{name: '1',url: 'http://www.17qq.com/img_qqtouxiang/69182556.jpeg'},{name: '2',url: 'http://www.17qq.com/img_qqtouxiang/69182556.jpeg'},{name: '3',url: 'http://www.17qq.com/img_qqtouxiang/69182556.jpeg'},{name: '4',url: 'http://www.17qq.com/img_qqtouxiang/69182556.jpeg'}]
+          },
+          source: "",
+          type: "申请表",
+          acceptance: [
+            {
+              content: "",
+              id: "978593df62654eef9fcece5498d60995",
+              materialId: "45c0ffe21b5c428c899b300679a52fa2",
+              number: 1,
+              type: 1
+            }
+          ],
+          approval: [
+            {
+              content: "",
+              id: "0a479d6c2b894eb980fcc6ec93bda0e4",
+              materialId: "45c0ffe21b5c428c899b300679a52fa2",
+              number: 1,
+              type: 2
+            }
+          ]
+        }
+        arr.push(data)
+      }
+      return new Promise((resolve, reject) => {
+        return resolve(arr)
+      })
     }
   }
 };
