@@ -33,3 +33,30 @@ const secondAsync = async function () {
 
 // firstAsync()  //  3s之后输出one
 // secondAsync()  // 1s之后输出one
+
+
+async function tryAwait () {
+  await new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject('错误了')
+    }, 5000)
+  })
+}
+
+async function tryAsync () {    
+  await tryAwait()
+  console.log('--------我被阻塞了  走不到这里')
+}
+
+
+async function tryAsync1 () {
+  try {
+    await tryAwait()
+    console.log('--------我被阻塞了  走不到这里')
+  } catch (error) {
+    console.log('--------我走到了catch')
+  }
+}
+
+tryAsync()
+tryAsync1()
